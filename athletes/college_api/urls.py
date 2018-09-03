@@ -6,6 +6,8 @@ from . import views
 
 router = DefaultRouter()
 router.register('hello-viewset',views.HelloWorldViewSet, base_name='hello-viewset')
+router.register('profile', views.AthleteProfileViewSet)
+
 
 urlpatterns = [
 	url(r'^helloworld/', views.HelloWorldView.as_view()),

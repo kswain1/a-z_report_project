@@ -98,3 +98,10 @@ class HelloWorldViewSet(viewsets.ViewSet):
 # 	serializer_class = serializers.AthleteProfileSerializer
 # 	queryset = models.AthleteProfile.objects.all()
 
+class AthleteProfileViewSet(viewsets.ModelViewSet):
+	"""handles creating, and updating profiles"""
+
+	serializer_class = serializers.AthleteProfileSerializer
+	queryset = models.AthleteProfile.objects.all()
+
+
