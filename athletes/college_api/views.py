@@ -104,4 +104,27 @@ class AthleteProfileViewSet(viewsets.ModelViewSet):
 	serializer_class = serializers.AthleteProfileSerializer
 	queryset = models.AthleteProfile.objects.all()
 
+class AthleteFeedViewSet(viewsets.ModelViewSet):
+	"""handles creating, reading, and updating profile feed items."""
+
+	serializer_class = serializers.AthleteFeedItemSerializer
+	queryset = models.AthleteFeedItem.objects.all()
+
+	def perform_create(self, serializer):
+		"""sets the user profile to the logged in user."""
+
+		serializer.save(user_profile=self.request.user)
+
+class AthleteEmgData(viewsets.ModelViewSet):
+	"""handles listing out the viewset data, creating, and destroying emg"""
+
+	serializer_class = serializers.AthleteEMGDataSerializer
+	queryset = models.AthleteEMGDataItem.objects.all()
+
+	def perform_create(self, serializer):
+		"""sets the user profile to the logged in user."""
+
+		serializer.save(user_profile=self.request.user)
+
+
 

@@ -4,4 +4,5 @@ from . import models
 
 # Register your models here.
 admin.site.register(models.AthleteProfile)
-admin.stie.register(models.AthleteFeedItem)
+admin.site.register(models.AthleteFeedItem)
+admin.site.register(models.AthleteEMGDataItem)

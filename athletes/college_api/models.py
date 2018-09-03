@@ -1,7 +1,9 @@
+from jsonfield import JSONField
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.models import BaseUserManager
+
 
 # Create your models here.
 
@@ -74,11 +76,16 @@ class AthleteFeedItem(models.Model):
 
 		return self.status_text
  
-class AthleteEMGData(models.Model):
+class AthleteEMGDataItem(models.Model):
 	"""Storing of the medical data for athletes"""
 
 	user_profile = models.ForeignKey('AthleteProfile', on_delete=models.CASCADE)
-	emg_data = models.CharField(max_length=255)
+	emg_data = JSONField()
 	created_on = models.DateTimeField(auto_now_add=True)
+
+	def __str__(self):
+		"""Returns the model as a string"""
+
+		return self.emg_data
 
 
