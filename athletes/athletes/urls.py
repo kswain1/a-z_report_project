@@ -15,7 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import url
+from rest_framework.routers import DefaultRouter
+#from . import views
+from django.conf.urls import include
+
+# router = DefaultRouter()
+# router.register('profile', views.AthleteProfileViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    url(r'^api/', include('college_api.urls')),
+    #url(r'', include(router.urls))
+
 ]
