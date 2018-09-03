@@ -4,6 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import viewsets
 from rest_framework import status
+from rest_framework import filters
 #from rest_framework import viewset
 
 from . import serializers
@@ -103,6 +104,8 @@ class AthleteProfileViewSet(viewsets.ModelViewSet):
 
 	serializer_class = serializers.AthleteProfileSerializer
 	queryset = models.AthleteProfile.objects.all()
+	filter_backends = (filters.SearchFilter,)
+	search_fields = ('name','email',)
 
 class AthleteFeedViewSet(viewsets.ModelViewSet):
 	"""handles creating, reading, and updating profile feed items."""
@@ -120,6 +123,8 @@ class AthleteEmgData(viewsets.ModelViewSet):
 
 	serializer_class = serializers.AthleteEMGDataSerializer
 	queryset = models.AthleteEMGDataItem.objects.all()
+	filter_backends = (filters.SearchFilter,)
+	search_fields = ('user_profile',)
 
 	def perform_create(self, serializer):
 		"""sets the user profile to the logged in user."""
