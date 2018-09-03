@@ -31,7 +31,6 @@ class AthleteProfileManager(BaseUserManager):
 
 		return user
 
-
 class AthleteProfile(AbstractBaseUser, PermissionsMixin):
 	"""This class is going to represent a user profile inside of our system"""
 
@@ -62,3 +61,24 @@ class AthleteProfile(AbstractBaseUser, PermissionsMixin):
 		"""Django uses this when its need to converts the object into a string"""
 
 		return self.email
+
+class AthleteFeedItem(models.Model):
+	"""profile status update"""
+
+	user_profile = models.ForeignKey('AthleteProfile', on_delete=models.CASCADE)
+	status_text = models.CharField(max_length=255)
+	created_on = models.DateTimeField(auto_now_add=True)
+
+	def __str__(self):
+		"""Returns the model as a string"""
+
+		return self.status_text
+ 
+class AthleteEMGData(models.Model):
+	"""Storing of the medical data for athletes"""
+
+	user_profile = models.ForeignKey('AthleteProfile', on_delete=models.CASCADE)
+	emg_data = models.CharField(max_length=255)
+	created_on = models.DateTimeField(auto_now_add=True)
+
+
