@@ -1,2 +1,2 @@
 
-web: gunicorn example.wsgi
+web: gunicorn athletes.wsgi
