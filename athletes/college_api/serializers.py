@@ -15,7 +15,7 @@ class AthleteProfileSerializer(serializers.ModelSerializer):
 
 	class Meta: 
 		model = models.AthleteProfile 
-		fields = ('id','email','name','password')
+		fields = ('id','email','name','password',)
 		extra_kwargs = {'password':{'write_only': True}}
 
 	def create(self, validated_data):
